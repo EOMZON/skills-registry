@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills.zondev.top/schema/skill.schema.json",
+  "title": "Skill Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "summary",
+    "scene",
+    "keywords",
+    "invoke",
+    "use_when",
+    "avoid_when",
+    "inputs",
+    "returns",
+    "updated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "subscenes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "invoke": {
+      "type": "string",
+      "minLength": 1
+    },
+    "use_when": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "avoid_when": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "required", "description"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "example": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "stateful": {
+          "type": "boolean"
+        }
+      }
+    },
+    "related_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "uniqueItems": true
+    },
+    "stability": {
+      "type": "string",
+      "enum": ["core", "stable", "experimental"]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "sanitized", "private-only"]
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "source_repo": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "review_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  }
+}

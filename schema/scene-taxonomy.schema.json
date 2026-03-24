@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills.zondev.top/schema/scene-taxonomy.schema.json",
+  "title": "Scene Taxonomy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scenes"],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "summary", "order", "aliases"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

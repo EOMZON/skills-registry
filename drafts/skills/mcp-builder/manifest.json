@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "id": "mcp-builder",
+  "title": "mcp-builder",
+  "summary": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+  "scene": "",
+  "keywords": [],
+  "invoke": "$mcp-builder",
+  "use_when": [],
+  "avoid_when": [],
+  "inputs": [],
+  "returns": [],
+  "dependencies": {
+    "bins": [
+      "node",
+      "python3"
+    ],
+    "services": [
+      "github"
+    ],
+    "stateful": true
+  },
+  "stability": "experimental",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-24",
+  "review_flags": [
+    "scene-needs-review",
+    "contains-secret-reference"
+  ]
+}

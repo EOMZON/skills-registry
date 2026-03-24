@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-23T16:53:56.088Z",
+  "total_skills": 3,
+  "scenes": [
+    {
+      "id": "research-decision",
+      "title": "调研与决策",
+      "count": 1
+    },
+    {
+      "id": "website-frontend",
+      "title": "网站与前端",
+      "count": 1
+    },
+    {
+      "id": "automation-shipping",
+      "title": "自动化与交付",
+      "count": 1
+    }
+  ],
+  "skills": [
+    {
+      "id": "best-minds",
+      "title": "Best Minds",
+      "summary": "世界级专家模拟与研究决策 skill，用于调研、思路梳理和路线规划。",
+      "scene": "research-decision",
+      "keywords": [
+        "research",
+        "decision",
+        "analysis",
+        "experts",
+        "best-minds",
+        "调研"
+      ],
+      "invoke": "$best-minds",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/best-minds/manifest.json",
+      "skill_md_path": "content/skills/best-minds/SKILL.md"
+    },
+    {
+      "id": "frontend-design",
+      "title": "Frontend Design",
+      "summary": "高质量网页、界面和前端实现 skill，强调风格判断与可上线交付。",
+      "scene": "website-frontend",
+      "keywords": [
+        "website",
+        "frontend",
+        "ui",
+        "landing-page",
+        "editorial",
+        "dashboard"
+      ],
+      "invoke": "$frontend-design",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/frontend-design/manifest.json",
+      "skill_md_path": "content/skills/frontend-design/SKILL.md"
+    },
+    {
+      "id": "vercel-deploy",
+      "title": "Vercel Deploy",
+      "summary": "将现有工程发布到 Vercel，并处理分析与域名配置。",
+      "scene": "automation-shipping",
+      "keywords": [
+        "deploy",
+        "vercel",
+        "domain",
+        "analytics",
+        "shipping"
+      ],
+      "invoke": "$vercel-deploy",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-03-24",
+      "manifest_path": "content/skills/vercel-deploy/manifest.json",
+      "skill_md_path": "content/skills/vercel-deploy/SKILL.md"
+    }
+  ]
+}

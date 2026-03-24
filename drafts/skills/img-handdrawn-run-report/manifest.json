@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "id": "img-handdrawn-run-report",
+  "title": "img-handdrawn-run-report",
+  "summary": "Generate a clean, printable Zon Minimal Editorial · Light HTML run report page for image runs (hand-drawn / sketchnote / Nano Banana / nano-banana-fast / sora-image). Use when user asks for “清晰的 HTML 展示/报告页/复现记录/Prompt 展示/生成过程归档” and you have an output image + meta JSON.",
+  "scene": "",
+  "keywords": [],
+  "invoke": "$img-handdrawn-run-report",
+  "use_when": [],
+  "avoid_when": [],
+  "inputs": [],
+  "returns": [],
+  "dependencies": {
+    "bins": [
+      "node"
+    ],
+    "services": [],
+    "stateful": true
+  },
+  "stability": "experimental",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-24",
+  "review_flags": [
+    "scene-needs-review",
+    "contains-local-path-or-state",
+    "contains-secret-reference"
+  ]
+}

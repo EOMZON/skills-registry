@@ -1,0 +1,11 @@
+{
+  "name": "skills-registry",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:index": "node scripts/build-registry-index.mjs",
+    "validate": "node scripts/validate-registry.mjs",
+    "export:public": "node scripts/export-public-manifest.mjs"
+  }
+}

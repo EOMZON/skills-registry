@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills.zondev.top/schema/registry-index.schema.json",
+  "title": "Registry Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "total_skills",
+    "scenes",
+    "skills"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_skills": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "count"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "summary",
+          "scene",
+          "invoke",
+          "visibility",
+          "stability",
+          "updated_at",
+          "manifest_path",
+          "skill_md_path"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "scene": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "invoke": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "string"
+          },
+          "stability": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "manifest_path": {
+            "type": "string"
+          },
+          "skill_md_path": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

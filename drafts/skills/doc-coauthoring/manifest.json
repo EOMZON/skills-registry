@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "id": "doc-coauthoring",
+  "title": "doc-coauthoring",
+  "summary": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+  "scene": "",
+  "keywords": [],
+  "invoke": "$doc-coauthoring",
+  "use_when": [],
+  "avoid_when": [],
+  "inputs": [],
+  "returns": [],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": true
+  },
+  "stability": "experimental",
+  "visibility": "sanitized",
+  "updated_at": "2026-03-24",
+  "review_flags": [
+    "scene-needs-review",
+    "contains-secret-reference"
+  ]
+}
