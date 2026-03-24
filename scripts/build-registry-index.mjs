@@ -36,11 +36,11 @@ function build() {
     sceneCounts.set(manifest.scene, (sceneCounts.get(manifest.scene) || 0) + 1);
   }
 
-  const scenes = [...sceneCounts.entries()]
-    .map(([id, count]) => ({
-      id,
-      title: sceneMap.get(id)?.title || id,
-      count
+  const scenes = scenesDoc.scenes
+    .map((scene) => ({
+      id: scene.id,
+      title: scene.title,
+      count: sceneCounts.get(scene.id) || 0
     }))
     .sort((a, b) => {
       const ao = sceneMap.get(a.id)?.order || Number.MAX_SAFE_INTEGER;

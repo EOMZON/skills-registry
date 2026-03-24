@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, "..");
 const contentDir = path.join(root, "content");
 const scenesPath = path.join(contentDir, "scenes.json");
+const sceneGuidesPath = path.join(contentDir, "scene-guides.json");
 const registryPath = path.join(contentDir, "registry.json");
 const skillsDir = path.join(contentDir, "skills");
 
@@ -77,8 +78,49 @@ function validateRegistry(registry, manifestsById, sceneIds) {
   }
 }
 
+function validateSceneGuides(sceneGuides, manifestsById, sceneIds) {
+  if (!sceneGuides) return;
+  if (!Array.isArray(sceneGuides.scenes)) {
+    fail("scene-guides.json: scenes must be an array");
+    return;
+  }
+
+  const allowedStatuses = new Set(["live", "coming-next", "sanitized-later", "private-only"]);
+
+  for (const guide of sceneGuides.scenes) {
+    if (!isNonEmptyString(guide.id)) fail("scene-guides.json: each guide needs a non-empty id");
+    if (!sceneIds.has(guide.id)) fail(`scene-guides.json: unknown scene "${guide.id}"`);
+    if (!allowedStatuses.has(guide.status)) {
+      fail(`scene-guides.json: invalid status "${guide.status}" for scene "${guide.id}"`);
+    }
+    if (!isStringArray(guide.core_tasks)) {
+      fail(`scene-guides.json: core_tasks must be string[] for scene "${guide.id}"`);
+    }
+    if (!isStringArray(guide.starter_ids || [])) {
+      fail(`scene-guides.json: starter_ids must be string[] for scene "${guide.id}"`);
+    }
+    for (const id of guide.starter_ids || []) {
+      if (!manifestsById.has(id)) fail(`scene-guides.json: unknown starter skill "${id}" in scene "${guide.id}"`);
+    }
+    if (!Array.isArray(guide.chains)) {
+      fail(`scene-guides.json: chains must be an array for scene "${guide.id}"`);
+      continue;
+    }
+    for (const chain of guide.chains) {
+      if (!Array.isArray(chain) || !chain.every((item) => typeof item === "string")) {
+        fail(`scene-guides.json: each chain must be string[] for scene "${guide.id}"`);
+        continue;
+      }
+      for (const id of chain) {
+        if (!manifestsById.has(id)) fail(`scene-guides.json: unknown chain skill "${id}" in scene "${guide.id}"`);
+      }
+    }
+  }
+}
+
 function main() {
   const scenesDoc = readJson(scenesPath);
+  const sceneGuides = fs.existsSync(sceneGuidesPath) ? readJson(sceneGuidesPath) : null;
   const registry = readJson(registryPath);
   const sceneIds = new Set((scenesDoc.scenes || []).map((scene) => scene.id));
 
@@ -100,6 +142,7 @@ function main() {
   }
 
   validateRegistry(registry, manifestsById, sceneIds);
+  validateSceneGuides(sceneGuides, manifestsById, sceneIds);
 
   if (process.exitCode) return;
   console.log(`Validated ${skillDirs.length} skills and registry index successfully.`);
