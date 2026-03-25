@@ -22,6 +22,16 @@ function listSkillDirs(dir) {
     .sort();
 }
 
+function addCount(map, key) {
+  map.set(key, (map.get(key) || 0) + 1);
+}
+
+function addNestedCount(map, groupKey, valueKey) {
+  const current = { ...(map.get(groupKey) || {}) };
+  current[valueKey] = (current[valueKey] || 0) + 1;
+  map.set(groupKey, current);
+}
+
 function build() {
   const scenesDoc = readJson(scenesPath);
   const sceneMap = new Map(scenesDoc.scenes.map((scene) => [scene.id, scene]));
@@ -32,15 +42,21 @@ function build() {
   });
 
   const sceneCounts = new Map();
+  const sceneVisibilityCounts = new Map();
+  const visibilityCounts = new Map();
   for (const { manifest } of manifests) {
-    sceneCounts.set(manifest.scene, (sceneCounts.get(manifest.scene) || 0) + 1);
+    const visibility = manifest.visibility || "public";
+    addCount(sceneCounts, manifest.scene);
+    addCount(visibilityCounts, visibility);
+    addNestedCount(sceneVisibilityCounts, manifest.scene, visibility);
   }
 
   const scenes = scenesDoc.scenes
     .map((scene) => ({
       id: scene.id,
       title: scene.title,
-      count: sceneCounts.get(scene.id) || 0
+      count: sceneCounts.get(scene.id) || 0,
+      visibility_counts: sceneVisibilityCounts.get(scene.id) || {}
     }))
     .sort((a, b) => {
       const ao = sceneMap.get(a.id)?.order || Number.MAX_SAFE_INTEGER;
@@ -66,6 +82,7 @@ function build() {
     schema_version: "1.0.0",
     generated_at: new Date().toISOString(),
     total_skills: skills.length,
+    visibility_counts: Object.fromEntries(visibilityCounts),
     scenes,
     skills
   };

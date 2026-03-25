@@ -29,6 +29,7 @@ function isStringArray(value) {
 }
 
 function validateManifest(slug, manifest, sceneIds) {
+  const allowedVisibilities = new Set(["public", "sanitized"]);
   const required = [
     "schema_version",
     "id",
@@ -59,6 +60,9 @@ function validateManifest(slug, manifest, sceneIds) {
   if (!isStringArray(manifest.avoid_when)) fail(`${slug}: avoid_when must be string[]`);
   if (!isStringArray(manifest.returns)) fail(`${slug}: returns must be string[]`);
   if (!Array.isArray(manifest.inputs)) fail(`${slug}: inputs must be array`);
+  if (manifest.visibility && !allowedVisibilities.has(manifest.visibility)) {
+    fail(`${slug}: visibility must be one of ${Array.from(allowedVisibilities).join(", ")}`);
+  }
 
   for (const input of manifest.inputs || []) {
     if (!isNonEmptyString(input.name)) fail(`${slug}: each input needs a non-empty name`);
