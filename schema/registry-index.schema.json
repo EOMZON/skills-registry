@@ -23,6 +23,16 @@
       "type": "integer",
       "minimum": 0
     },
+    "visibility_counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "source_repo": {
+      "type": "string"
+    },
     "scenes": {
       "type": "array",
       "items": {
@@ -39,6 +49,13 @@
           "count": {
             "type": "integer",
             "minimum": 0
+          },
+          "visibility_counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
           }
         }
       }
@@ -57,6 +74,11 @@
           "visibility",
           "stability",
           "updated_at",
+          "source_repo",
+          "source_path",
+          "source_tree_url",
+          "source_manifest_url",
+          "source_skill_md_url",
           "manifest_path",
           "skill_md_path"
         ],
@@ -91,6 +113,21 @@
           "updated_at": {
             "type": "string",
             "format": "date"
+          },
+          "source_repo": {
+            "type": "string"
+          },
+          "source_path": {
+            "type": "string"
+          },
+          "source_tree_url": {
+            "type": "string"
+          },
+          "source_manifest_url": {
+            "type": "string"
+          },
+          "source_skill_md_url": {
+            "type": "string"
           },
           "manifest_path": {
             "type": "string"

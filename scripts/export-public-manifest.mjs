@@ -6,6 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, "..");
 const outputSkillsDir = path.join(root, "drafts", "skills");
+const publicRepoUrl = (process.env.SKILLS_REGISTRY_PUBLIC_REPO_URL || "https://github.com/EOMZON/skills-registry")
+  .replace(/\.git$/, "")
+  .replace(/\/+$/, "");
 
 function usage() {
   console.log("Usage: node scripts/export-public-manifest.mjs --src /absolute/path/to/private-skill [--dest slug]");
@@ -114,6 +117,7 @@ function buildManifest({ slug, skillText }) {
     dependencies,
     stability: "experimental",
     visibility: dependencies.stateful ? "sanitized" : "public",
+    source_repo: publicRepoUrl,
     updated_at: new Date().toISOString().slice(0, 10),
     review_flags: [...new Set(["scene-needs-review", ...reviewFlags])]
   };
