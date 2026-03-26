@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-25T03:57:43.452Z",
-  "total_skills": 12,
+  "generated_at": "2026-03-26T09:49:28.350Z",
+  "total_skills": 14,
   "visibility_counts": {
-    "public": 9,
+    "public": 11,
     "sanitized": 3
   },
   "source_repo": "https://github.com/EOMZON/skills-registry",
@@ -35,9 +35,9 @@
     {
       "id": "website-frontend",
       "title": "网站与前端",
-      "count": 2,
+      "count": 3,
       "visibility_counts": {
-        "public": 2
+        "public": 3
       }
     },
     {
@@ -60,8 +60,10 @@
     {
       "id": "product-project",
       "title": "项目与产品推进",
-      "count": 0,
-      "visibility_counts": {}
+      "count": 1,
+      "visibility_counts": {
+        "public": 1
+      }
     }
   ],
   "skills": [
@@ -272,6 +274,58 @@
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/theme-factory",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/manifest.json",
       "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/theme-factory/SKILL.md"
+    },
+    {
+      "id": "ux-clarity-audit",
+      "title": "UX Clarity Audit",
+      "summary": "快速审查首页、页面和关键流程里哪里让用户看不懂、犹豫或走错路。",
+      "scene": "website-frontend",
+      "keywords": [
+        "ux",
+        "clarity",
+        "homepage",
+        "ia",
+        "copy",
+        "flow",
+        "review"
+      ],
+      "invoke": "$ux-clarity-audit",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-26",
+      "manifest_path": "content/skills/ux-clarity-audit/manifest.json",
+      "skill_md_path": "content/skills/ux-clarity-audit/SKILL.md",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/ux-clarity-audit",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/ux-clarity-audit",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/ux-clarity-audit/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/ux-clarity-audit/SKILL.md"
+    },
+    {
+      "id": "ux-service-audit",
+      "title": "UX Service Audit",
+      "summary": "审查多触点、多角色、多系统的服务链路，找出真正让体验断掉的交接点。",
+      "scene": "product-project",
+      "keywords": [
+        "ux",
+        "service-design",
+        "journey",
+        "handoff",
+        "roles",
+        "systems",
+        "audit"
+      ],
+      "invoke": "$ux-service-audit",
+      "visibility": "public",
+      "stability": "core",
+      "updated_at": "2026-03-26",
+      "manifest_path": "content/skills/ux-service-audit/manifest.json",
+      "skill_md_path": "content/skills/ux-service-audit/SKILL.md",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/ux-service-audit",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/ux-service-audit",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/ux-service-audit/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/ux-service-audit/SKILL.md"
     },
     {
       "id": "vercel-deploy",

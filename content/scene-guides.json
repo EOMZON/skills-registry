@@ -42,11 +42,12 @@
       "status": "live",
       "core_tasks": [
         "明确页面风格、结构和叙事顺序",
+        "快速找出首页、落地页和关键流程的清晰度问题",
         "在真实浏览器里验证交互",
         "把页面稳定上线"
       ],
-      "starter_ids": ["frontend-design", "webapp-testing", "vercel-deploy"],
-      "chains": [["frontend-design", "webapp-testing", "vercel-deploy"]]
+      "starter_ids": ["ux-clarity-audit", "frontend-design", "webapp-testing", "vercel-deploy"],
+      "chains": [["ux-clarity-audit", "frontend-design", "webapp-testing", "vercel-deploy"]]
     },
     {
       "id": "coding-engineering",
@@ -77,14 +78,15 @@
     },
     {
       "id": "product-project",
-      "status": "coming-next",
+      "status": "live",
       "core_tasks": [
         "梳理项目路线和优先级",
+        "找出跨角色、跨系统、多触点链路里的断点",
         "组织 backlog、里程碑和推进节奏",
         "把模糊需求压成可执行的问题"
       ],
-      "starter_ids": [],
-      "chains": [["best-minds", "doc-coauthoring"]]
+      "starter_ids": ["ux-service-audit", "best-minds", "doc-coauthoring"],
+      "chains": [["best-minds", "ux-service-audit", "doc-coauthoring"]]
     }
   ]
 }

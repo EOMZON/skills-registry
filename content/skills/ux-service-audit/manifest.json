@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "id": "ux-service-audit",
+  "title": "UX Service Audit",
+  "summary": "审查多触点、多角色、多系统的服务链路，找出真正让体验断掉的交接点。",
+  "scene": "product-project",
+  "subscenes": ["service-design", "journey-audit", "handoff-review"],
+  "keywords": ["ux", "service-design", "journey", "handoff", "roles", "systems", "audit"],
+  "invoke": "$ux-service-audit",
+  "use_when": [
+    "问题不在单个页面，而在注册、审批、通知、支持等整条流程",
+    "体验跨多个角色、系统、渠道或 handoff",
+    "你想先找结构性断点，再决定要改哪些页面"
+  ],
+  "avoid_when": [
+    "只需要快速审一个首页或单个页面",
+    "问题主要是视觉风格不够统一，而不是链路断点"
+  ],
+  "inputs": [
+    {
+      "name": "service_scope",
+      "required": true,
+      "description": "要审查的服务范围、关键触点和涉及的系统"
+    },
+    {
+      "name": "primary_roles",
+      "required": false,
+      "description": "主要用户、协作者、审批者或运营角色"
+    },
+    {
+      "name": "critical_scenarios",
+      "required": false,
+      "description": "最重要的任务场景、失败点或投诉点"
+    }
+  ],
+  "returns": [
+    "服务链路断点清单",
+    "角色与交接问题判断",
+    "下一轮结构性修复方向"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": ["ux-clarity-audit", "best-minds", "doc-coauthoring", "webapp-testing"],
+  "stability": "core",
+  "visibility": "public",
+  "updated_at": "2026-03-26",
+  "license": "Complete terms in upstream license"
+}

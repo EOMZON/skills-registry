@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "id": "ux-clarity-audit",
+  "title": "UX Clarity Audit",
+  "summary": "快速审查首页、页面和关键流程里哪里让用户看不懂、犹豫或走错路。",
+  "scene": "website-frontend",
+  "subscenes": ["homepage-audit", "flow-audit", "ux-review"],
+  "keywords": ["ux", "clarity", "homepage", "ia", "copy", "flow", "review"],
+  "invoke": "$ux-clarity-audit",
+  "use_when": [
+    "首页讲不清你是谁、做什么、适合谁",
+    "入口很多但用户不知道先点哪个",
+    "想快速找出页面、文案、CTA 和路径上的清晰度问题"
+  ],
+  "avoid_when": [
+    "问题明显跨多个系统、角色和线下线上交接",
+    "只想做视觉风格探索，不需要任何审计结论"
+  ],
+  "inputs": [
+    {
+      "name": "target",
+      "required": true,
+      "description": "要审查的页面、网址、产品或关键流程"
+    },
+    {
+      "name": "primary_goal",
+      "required": false,
+      "description": "用户最重要的任务或你最担心的关键路径"
+    },
+    {
+      "name": "known_breakpoints",
+      "required": false,
+      "description": "已知的跳出点、困惑点或要重点看的模块"
+    }
+  ],
+  "returns": [
+    "优先级问题清单",
+    "首页或流程清晰度判断",
+    "三条最值得先改的动作"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": ["ux-service-audit", "frontend-design", "webapp-testing", "best-minds"],
+  "stability": "core",
+  "visibility": "public",
+  "updated_at": "2026-03-26",
+  "license": "Complete terms in upstream license"
+}
