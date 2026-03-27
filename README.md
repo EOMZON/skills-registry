@@ -43,17 +43,20 @@ docs/
   publishing.md
   sanitization-rules.md
   private-to-public-export.md
+  sync-guardrails.md
 
 scripts/
   build-registry-index.mjs
   validate-registry.mjs
   export-public-manifest.mjs
+  audit-sync-parity.mjs
 ```
 
 ## Quick Start
 
 ```bash
 cd skills-registry
+npm run audit:sync
 npm run build:index
 npm run validate
 ```
@@ -70,11 +73,13 @@ Human-friendly entry points:
 - `content/skills/<slug>/SKILL.md`
 - `docs/scene-taxonomy.md`
 - `docs/sanitization-rules.md`
+- `docs/sync-guardrails.md`
 
 ## Notes
 
 - `registry.json` is generated from `content/skills/*/manifest.json`.
-- `export-public-manifest.mjs` is a bootstrap exporter, not a final publishing oracle.
+- `export-public-manifest.mjs` exports a sanitized draft and can now carry over `references/` markdown packs.
+- `audit-sync-parity.mjs` checks method-parity drift, missing reference-pack publication, and sensitive leak patterns.
 - Human review is still required for `scene`, `use_when`, `avoid_when`, and final redaction quality.
 
 ## First Public Batch

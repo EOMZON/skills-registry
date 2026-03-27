@@ -10,6 +10,12 @@ Convert a private skill into a public registry entry without leaking:
 - private repo structure
 - personal infrastructure assumptions
 
+The objective is **parity-preserving redaction**:
+
+- Keep method, process, and decision flow intact
+- Redact sensitive operational details only
+- Avoid collapsing full methodology into a discovery-only card
+
 ## Classification
 
 Each skill should end in one of three buckets:
@@ -128,3 +134,5 @@ The exporter can help, but it cannot safely decide:
 - nuanced privacy boundaries
 - whether a platform-specific workflow is too personal to open
 - whether an example still leaks operational detail
+- whether public method structure still matches the private source
+- whether private `references/` should publish as sanitized public references

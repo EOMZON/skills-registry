@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "ux-service-audit",
   "title": "UX Service Audit",
-  "summary": "审查多触点、多角色、多系统的服务链路，找出真正让体验断掉的交接点。",
+  "summary": "按服务设计方法审查多触点、多角色、多系统链路，定位 handoff 断点并产出分层修复计划。",
   "scene": "product-project",
   "subscenes": ["service-design", "journey-audit", "handoff-review"],
   "keywords": ["ux", "service-design", "journey", "handoff", "roles", "systems", "audit"],
@@ -31,12 +31,18 @@
       "name": "critical_scenarios",
       "required": false,
       "description": "最重要的任务场景、失败点或投诉点"
+    },
+    {
+      "name": "evidence_pack",
+      "required": false,
+      "description": "可用证据，如支持工单、关键指标、典型失败案例、SLA 约束"
     }
   ],
   "returns": [
-    "服务链路断点清单",
-    "角色与交接问题判断",
-    "下一轮结构性修复方向"
+    "服务链路断点清单（含 stage/handoff 定位）",
+    "角色与交接问题判断（含 priority 与 confidence）",
+    "quick repairs 与 structural fixes 分层计划",
+    "验证信号与指标建议"
   ],
   "dependencies": {
     "bins": [],
@@ -46,6 +52,6 @@
   "related_ids": ["ux-clarity-audit", "best-minds", "doc-coauthoring", "webapp-testing"],
   "stability": "core",
   "visibility": "public",
-  "updated_at": "2026-03-26",
+  "updated_at": "2026-03-27",
   "license": "Complete terms in upstream license"
 }

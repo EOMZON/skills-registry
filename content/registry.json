@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-26T09:49:28.350Z",
+  "generated_at": "2026-03-26T16:52:53.330Z",
   "total_skills": 14,
   "visibility_counts": {
     "public": 11,
@@ -278,7 +278,7 @@
     {
       "id": "ux-clarity-audit",
       "title": "UX Clarity Audit",
-      "summary": "快速审查首页、页面和关键流程里哪里让用户看不懂、犹豫或走错路。",
+      "summary": "用结构化 UX audit 方法快速定位首页、页面和关键流程的理解断点，并给出可验证改进动作。",
       "scene": "website-frontend",
       "keywords": [
         "ux",
@@ -292,7 +292,7 @@
       "invoke": "$ux-clarity-audit",
       "visibility": "public",
       "stability": "core",
-      "updated_at": "2026-03-26",
+      "updated_at": "2026-03-27",
       "manifest_path": "content/skills/ux-clarity-audit/manifest.json",
       "skill_md_path": "content/skills/ux-clarity-audit/SKILL.md",
       "source_repo": "https://github.com/EOMZON/skills-registry",
@@ -304,7 +304,7 @@
     {
       "id": "ux-service-audit",
       "title": "UX Service Audit",
-      "summary": "审查多触点、多角色、多系统的服务链路，找出真正让体验断掉的交接点。",
+      "summary": "按服务设计方法审查多触点、多角色、多系统链路，定位 handoff 断点并产出分层修复计划。",
       "scene": "product-project",
       "keywords": [
         "ux",
@@ -318,7 +318,7 @@
       "invoke": "$ux-service-audit",
       "visibility": "public",
       "stability": "core",
-      "updated_at": "2026-03-26",
+      "updated_at": "2026-03-27",
       "manifest_path": "content/skills/ux-service-audit/manifest.json",
       "skill_md_path": "content/skills/ux-service-audit/SKILL.md",
       "source_repo": "https://github.com/EOMZON/skills-registry",
@@ -407,7 +407,7 @@
     {
       "id": "zon-minimal-editorial",
       "title": "Zon Minimal Editorial",
-      "summary": "把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。",
+      "summary": "把内容型网站和页面做成克制、黑白、内容优先的 editorial family；它是一个可选方向，不是所有站点的默认壳。",
       "scene": "design-visual",
       "keywords": [
         "editorial",

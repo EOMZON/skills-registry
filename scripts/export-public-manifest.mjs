@@ -11,7 +11,9 @@ const publicRepoUrl = (process.env.SKILLS_REGISTRY_PUBLIC_REPO_URL || "https://g
   .replace(/\/+$/, "");
 
 function usage() {
-  console.log("Usage: node scripts/export-public-manifest.mjs --src /absolute/path/to/private-skill [--dest slug]");
+  console.log(
+    "Usage: node scripts/export-public-manifest.mjs --src /absolute/path/to/private-skill [--dest slug] [--no-references]"
+  );
 }
 
 function getArg(flag) {
@@ -22,6 +24,10 @@ function getArg(flag) {
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
+}
+
+function hasFlag(flag) {
+  return process.argv.includes(flag);
 }
 
 function readSkillMd(srcDir) {
@@ -81,6 +87,8 @@ function sanitizeMarkdown(text) {
   return text
     .replace(/\/Users\/[^\s)`"'<>]+/g, "/absolute/path/to/source")
     .replace(/~\/\.codex\/[^\s)`"'<>]+/g, "/absolute/path/to/source")
+    .replace(/\b(?:ghp|gho|ghu|github_pat|sk)_[A-Za-z0-9_]{16,}\b/g, "REDACTED_SECRET_VALUE")
+    .replace(/https?:\/\/hooks\.[^\s)"']+/gi, "https://hooks.example.invalid/REDACTED")
     .replace(/\b[A-Z0-9_]*(TOKEN|SECRET|WEBHOOK|API_KEY|PAT)\b/g, "REDACTED_CREDENTIAL_NAME")
     .replace(/storage_state\.json/gi, "AUTH_STATE_FILE")
     .replace(/\bskills\.zondev\.top\b/gi, "your-skills-domain.example")
@@ -93,7 +101,47 @@ function firstParagraph(text) {
   return parts.find((part) => !part.startsWith("#")) || "";
 }
 
-function buildManifest({ slug, skillText }) {
+function walkMarkdownFiles(dirPath) {
+  if (!fs.existsSync(dirPath)) return [];
+  const stack = [dirPath];
+  const files = [];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    const entries = fs.readdirSync(current, { withFileTypes: true });
+    for (const entry of entries) {
+      const absPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(absPath);
+        continue;
+      }
+      if (/\.md$/i.test(entry.name)) files.push(absPath);
+    }
+  }
+  return files.sort();
+}
+
+function exportReferences({ srcDir, targetDir }) {
+  const srcReferencesDir = path.join(srcDir, "references");
+  if (!fs.existsSync(srcReferencesDir)) {
+    return { exported: 0, privateCount: 0 };
+  }
+
+  const files = walkMarkdownFiles(srcReferencesDir);
+  const targetReferencesDir = path.join(targetDir, "references");
+  ensureDir(targetReferencesDir);
+
+  for (const filePath of files) {
+    const relativePath = path.relative(srcReferencesDir, filePath);
+    const destPath = path.join(targetReferencesDir, relativePath);
+    ensureDir(path.dirname(destPath));
+    const text = fs.readFileSync(filePath, "utf8");
+    fs.writeFileSync(destPath, sanitizeMarkdown(text));
+  }
+
+  return { exported: files.length, privateCount: files.length };
+}
+
+function buildManifest({ slug, skillText, hasReferencePack }) {
   const title = extractFrontmatterValue(skillText, "name") || slug;
   const summary =
     extractFrontmatterValue(skillText, "description") ||
@@ -119,13 +167,16 @@ function buildManifest({ slug, skillText }) {
     visibility: dependencies.stateful ? "sanitized" : "public",
     source_repo: publicRepoUrl,
     updated_at: new Date().toISOString().slice(0, 10),
-    review_flags: [...new Set(["scene-needs-review", ...reviewFlags])]
+    review_flags: [
+      ...new Set(["scene-needs-review", "method-parity-needs-review", ...(hasReferencePack ? ["reference-pack-needs-review"] : []), ...reviewFlags])
+    ]
   };
 }
 
 function main() {
   const src = getArg("--src");
   const dest = getArg("--dest");
+  const includeReferences = !hasFlag("--no-references");
   if (!src) {
     usage();
     process.exit(1);
@@ -134,7 +185,8 @@ function main() {
   const srcDir = path.resolve(src);
   const slug = dest || path.basename(srcDir);
   const skillText = readSkillMd(srcDir);
-  const manifest = buildManifest({ slug, skillText });
+  const hasReferencePack = fs.existsSync(path.join(srcDir, "references"));
+  const manifest = buildManifest({ slug, skillText, hasReferencePack });
   const publicSkillMd = sanitizeMarkdown(skillText);
 
   const targetDir = path.join(outputSkillsDir, slug);
@@ -142,9 +194,22 @@ function main() {
   fs.writeFileSync(path.join(targetDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
   fs.writeFileSync(path.join(targetDir, "SKILL.md"), publicSkillMd);
 
+  let exportedReferenceCount = 0;
+  let privateReferenceCount = 0;
+  if (includeReferences) {
+    const exportResult = exportReferences({ srcDir, targetDir });
+    exportedReferenceCount = exportResult.exported;
+    privateReferenceCount = exportResult.privateCount;
+  }
+
   console.log(`Exported public candidate for "${slug}" to ${targetDir}`);
   console.log("Draft only: manual review still required before promoting into content/skills.");
-  console.log("You must still set scene, keywords, use_when, avoid_when, inputs, returns, and review redaction quality.");
+  if (privateReferenceCount > 0) {
+    console.log(`Reference pack: exported ${exportedReferenceCount}/${privateReferenceCount} markdown file(s).`);
+  }
+  console.log(
+    "You must still set scene, keywords, use_when, avoid_when, inputs, returns, and review redaction + method parity quality."
+  );
 }
 
 main();

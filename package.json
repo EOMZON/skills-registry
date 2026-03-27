@@ -6,6 +6,8 @@
   "scripts": {
     "build:index": "node scripts/build-registry-index.mjs",
     "validate": "node scripts/validate-registry.mjs",
-    "export:public": "node scripts/export-public-manifest.mjs"
+    "export:public": "node scripts/export-public-manifest.mjs",
+    "audit:sync": "node scripts/audit-sync-parity.mjs",
+    "audit:sync:strict": "node scripts/audit-sync-parity.mjs --strict"
   }
 }

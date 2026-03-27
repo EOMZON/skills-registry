@@ -10,21 +10,24 @@ Private authoring happens upstream. Public publishing happens here.
 
 1. Author or update the private skill in the private source.
 2. Export a public candidate with `scripts/export-public-manifest.mjs`.
-3. Review redaction output manually.
-4. Place the reviewed files under `content/skills/<slug>/`.
-5. Run:
+3. Run sync guardrails (`npm run audit:sync`).
+4. Review redaction output and method parity manually.
+5. Place the reviewed files under `content/skills/<slug>/`.
+6. Run:
 
 ```bash
+npm run audit:sync:strict
 npm run build:index
 npm run validate
 ```
 
-6. Commit the changes.
+7. Commit the changes.
 
 ## Required Files Per Skill
 
 - `content/skills/<slug>/manifest.json`
 - `content/skills/<slug>/SKILL.md`
+- `content/skills/<slug>/references/*.md` when private source includes references
 
 ## Review Checklist
 
@@ -34,3 +37,5 @@ npm run validate
 - `scene` is correct
 - `use_when` and `avoid_when` are concrete
 - `inputs` and `returns` are useful to both humans and agents
+- Core method structure is still recognizable compared with private source
+- Reference packs are published (or intentionally omitted with reviewer sign-off)

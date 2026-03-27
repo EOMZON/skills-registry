@@ -19,6 +19,7 @@ Draft export target:
 
 - `skills-registry/drafts/skills/<slug>/manifest.json`
 - `skills-registry/drafts/skills/<slug>/SKILL.md`
+- `skills-registry/drafts/skills/<slug>/references/*.md` (when available)
 
 ## Export Flow
 
@@ -29,15 +30,17 @@ Draft export target:
    - likely invoke token
 3. Produce a first-pass manifest
 4. Sanitize the Markdown body
-5. Add review flags
-6. Export into `drafts/skills/<slug>/`
-7. Manually set:
+5. Export sanitized `references/` markdown pack (if private source has one)
+6. Add review flags
+7. Export into `drafts/skills/<slug>/`
+8. Run sync-parity audit (`npm run audit:sync`)
+9. Manually set:
    - `scene`
    - `use_when`
    - `avoid_when`
    - `returns`
    - final visibility bucket
-8. Only after review, promote the files into `content/skills/<slug>/`
+10. Only after review, promote the files into `content/skills/<slug>/`
 
 ## Export Outcomes
 
@@ -63,3 +66,16 @@ Draft export target:
 - `webapp-testing`
 - `vercel-deploy`
 - `vercel-ship`
+
+## Export Command
+
+```bash
+cd skills-registry
+npm run export:public -- --src /absolute/path/to/private-skill --dest skill-slug
+```
+
+If you need to skip reference export:
+
+```bash
+npm run export:public -- --src /absolute/path/to/private-skill --dest skill-slug --no-references
+```
