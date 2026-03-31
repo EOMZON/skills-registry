@@ -15,6 +15,7 @@ The objective is **parity-preserving redaction**:
 - Keep method, process, and decision flow intact
 - Redact sensitive operational details only
 - Avoid collapsing full methodology into a discovery-only card
+- Replace private values with public placeholders, not with missing steps
 
 ## Classification
 
@@ -67,6 +68,11 @@ With:
 - `$SKILL_ROOT`
 - `/absolute/path/to/source`
 
+Important:
+
+- If the original text points to a reusable skill-relative helper or reference, keep that structure visible with a placeholder such as `$SKILL_ROOT/scripts/foo.mjs`
+- If the original text points to a private env file, replace the value with a caller-supplied path such as `/path/to/.env`
+
 ### Secrets
 
 Never publish:
@@ -83,6 +89,12 @@ Replace with abstract requirements:
 - `requires env var`
 - `requires authenticated browser state`
 - `requires service credential configured by user`
+
+Do not over-redact public interface names that are themselves useful instructions:
+
+- Keep environment variable names like `GITHUB_TOKEN`, `GH_TOKEN`, `VERCEL_TOKEN`
+- Keep auth entrypoints like `gh auth login` or `vercel login`
+- Redact secret values and private file locations, not the existence of the auth mechanism
 
 ### Private Repos / Domains
 
@@ -110,7 +122,6 @@ Remove or generalize:
 
 Replace concrete file references like:
 
-- `storage_state.json`
 - local cookie databases
 - `.env` file paths
 
@@ -118,6 +129,13 @@ With abstract dependency notes:
 
 - `requires browser login state`
 - `requires credentials configured in environment`
+
+If a filename is only illustrating a generic integration contract, a sanitized placeholder filename is acceptable, for example:
+
+- `/path/to/playwright-state.json`
+- `/path/to/.env`
+
+What must not leak is the real personal path or the contents of those files.
 
 ## Public Manifest Rules
 

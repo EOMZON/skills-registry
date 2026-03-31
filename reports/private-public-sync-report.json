@@ -1,0 +1,308 @@
+{
+  "generated_at": "2026-03-31T13:08:18.316Z",
+  "config": {
+    "private_root": "/Users/<redacted-user>/.codex/skills",
+    "public_root": "/Users/<redacted-user>/Desktop/CreationOS/skills-registry/content/skills",
+    "strict": false
+  },
+  "summary": {
+    "skills_scanned": 14,
+    "skills_with_issues": 6,
+    "issue_counts": {
+      "high": 0,
+      "medium": 9,
+      "low": 0
+    }
+  },
+  "skills": [
+    {
+      "slug": "best-minds",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 50,
+        "public_lines": 25,
+        "compression_ratio": 0.5,
+        "private_heading_count": 5,
+        "public_heading_count": 5,
+        "heading_coverage": 0.2,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "doc-coauthoring",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 376,
+        "public_lines": 26,
+        "compression_ratio": 0.069,
+        "private_heading_count": 26,
+        "public_heading_count": 5,
+        "heading_coverage": 0,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "method-compression-risk",
+          "detail": "public SKILL.md is much shorter (ratio 0.069, private=376 lines, public=26 lines)"
+        },
+        {
+          "severity": "medium",
+          "code": "low-heading-coverage",
+          "detail": "public headings cover 0% of private headings (5/26)"
+        }
+      ]
+    },
+    {
+      "slug": "frontend-design",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 99,
+        "public_lines": 25,
+        "compression_ratio": 0.253,
+        "private_heading_count": 5,
+        "public_heading_count": 5,
+        "heading_coverage": 0,
+        "private_reference_count": 6,
+        "public_reference_count": 0,
+        "reference_coverage": 0
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "method-compression-risk",
+          "detail": "public SKILL.md is much shorter (ratio 0.253, private=99 lines, public=25 lines)"
+        },
+        {
+          "severity": "medium",
+          "code": "missing-public-reference-pack",
+          "detail": "private references exist (6 files), but public references/ is empty"
+        }
+      ]
+    },
+    {
+      "slug": "github-ops",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 53,
+        "public_lines": 81,
+        "compression_ratio": 1.528,
+        "private_heading_count": 7,
+        "public_heading_count": 10,
+        "heading_coverage": 0.714,
+        "private_reference_count": 1,
+        "public_reference_count": 1,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "github-repo-bootstrap",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 82,
+        "public_lines": 107,
+        "compression_ratio": 1.305,
+        "private_heading_count": 9,
+        "public_heading_count": 11,
+        "heading_coverage": 0.889,
+        "private_reference_count": 1,
+        "public_reference_count": 1,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "img-handdrawn-run-report",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 59,
+        "public_lines": 26,
+        "compression_ratio": 0.441,
+        "private_heading_count": 5,
+        "public_heading_count": 5,
+        "heading_coverage": 0,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "mcp-builder",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 237,
+        "public_lines": 26,
+        "compression_ratio": 0.11,
+        "private_heading_count": 14,
+        "public_heading_count": 5,
+        "heading_coverage": 0,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "method-compression-risk",
+          "detail": "public SKILL.md is much shorter (ratio 0.11, private=237 lines, public=26 lines)"
+        },
+        {
+          "severity": "medium",
+          "code": "low-heading-coverage",
+          "detail": "public headings cover 0% of private headings (5/14)"
+        }
+      ]
+    },
+    {
+      "slug": "theme-factory",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 60,
+        "public_lines": 26,
+        "compression_ratio": 0.433,
+        "private_heading_count": 7,
+        "public_heading_count": 5,
+        "heading_coverage": 0,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "low-heading-coverage",
+          "detail": "public headings cover 0% of private headings (5/7)"
+        }
+      ]
+    },
+    {
+      "slug": "ux-clarity-audit",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 238,
+        "public_lines": 235,
+        "compression_ratio": 0.987,
+        "private_heading_count": 13,
+        "public_heading_count": 13,
+        "heading_coverage": 1,
+        "private_reference_count": 6,
+        "public_reference_count": 6,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "ux-service-audit",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 265,
+        "public_lines": 262,
+        "compression_ratio": 0.989,
+        "private_heading_count": 12,
+        "public_heading_count": 12,
+        "heading_coverage": 1,
+        "private_reference_count": 5,
+        "public_reference_count": 5,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "vercel-deploy",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 103,
+        "public_lines": 119,
+        "compression_ratio": 1.155,
+        "private_heading_count": 11,
+        "public_heading_count": 13,
+        "heading_coverage": 0.909,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "vercel-ship",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 217,
+        "public_lines": 187,
+        "compression_ratio": 0.862,
+        "private_heading_count": 24,
+        "public_heading_count": 17,
+        "heading_coverage": 0.458,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "low-heading-coverage",
+          "detail": "public headings cover 46% of private headings (17/24)"
+        }
+      ]
+    },
+    {
+      "slug": "webapp-testing",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 96,
+        "public_lines": 105,
+        "compression_ratio": 1.094,
+        "private_heading_count": 8,
+        "public_heading_count": 14,
+        "heading_coverage": 0.875,
+        "private_reference_count": 0,
+        "public_reference_count": 0,
+        "reference_coverage": 1
+      },
+      "issues": []
+    },
+    {
+      "slug": "zon-minimal-editorial",
+      "private_present": true,
+      "public_present": true,
+      "metrics": {
+        "private_lines": 48,
+        "public_lines": 27,
+        "compression_ratio": 0.563,
+        "private_heading_count": 4,
+        "public_heading_count": 5,
+        "heading_coverage": 0.25,
+        "private_reference_count": 2,
+        "public_reference_count": 0,
+        "reference_coverage": 0
+      },
+      "issues": [
+        {
+          "severity": "medium",
+          "code": "missing-public-reference-pack",
+          "detail": "private references exist (2 files), but public references/ is empty"
+        }
+      ]
+    }
+  ]
+}

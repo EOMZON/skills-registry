@@ -39,6 +39,7 @@ Draft export target:
    - `use_when`
    - `avoid_when`
    - `returns`
+   - replace unpublished private helper-script commands with public CLI equivalents or a generic placeholder contract
    - final visibility bucket
 10. Only after review, promote the files into `content/skills/<slug>/`
 

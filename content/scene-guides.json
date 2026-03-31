@@ -27,13 +27,14 @@
       "id": "design-visual",
       "status": "live",
       "core_tasks": [
-        "为产物确定一套清晰的视觉主题",
-        "把图像生成过程整理成可复查的报告",
-        "把视觉方向沉淀成可复用的呈现层"
+        "先判断内容形状与使用场景，再选择合适的视觉家族",
+        "把视觉层和信息 / 交互层拆开，而不是默认套同一种模板",
+        "把视觉方向沉淀成可复用的呈现层，并保留多种风格分支"
       ],
-      "starter_ids": ["zon-minimal-editorial", "theme-factory", "img-handdrawn-run-report"],
+      "starter_ids": ["frontend-design", "theme-factory", "zon-minimal-editorial", "img-handdrawn-run-report"],
       "chains": [
-        ["zon-minimal-editorial", "theme-factory", "frontend-design"],
+        ["best-minds", "frontend-design", "theme-factory"],
+        ["frontend-design", "zon-minimal-editorial"],
         ["theme-factory", "img-handdrawn-run-report", "frontend-design"]
       ]
     },

@@ -83,16 +83,36 @@ function detectDependencies(text) {
   };
 }
 
-function sanitizeMarkdown(text) {
+function sanitizePathValue(rawPath, { srcDir }) {
+  const normalizedSrcDir = srcDir.replace(/\\/g, "/");
+  const normalized = rawPath.replace(/\\/g, "/");
+
+  if (normalized.startsWith(normalizedSrcDir)) {
+    const relative = normalized.slice(normalizedSrcDir.length).replace(/^\/+/, "");
+    return relative ? `$SKILL_ROOT/${relative}` : "$SKILL_ROOT";
+  }
+
+  if (/\/\.env(\.[A-Za-z0-9_-]+)?$/i.test(normalized)) {
+    return "/path/to/.env";
+  }
+
+  const basename = path.basename(normalized);
+  if (basename && /\.[A-Za-z0-9_-]+$/.test(basename)) {
+    return `/path/to/${basename}`;
+  }
+
+  return "/path/to/project";
+}
+
+function sanitizeMarkdown(text, { srcDir }) {
   return text
-    .replace(/\/Users\/[^\s)`"'<>]+/g, "/absolute/path/to/source")
-    .replace(/~\/\.codex\/[^\s)`"'<>]+/g, "/absolute/path/to/source")
+    .replace(/\/Users\/[^\s)`"'<>]+/g, (match) => sanitizePathValue(match, { srcDir }))
+    .replace(/~\/\.codex\/[^\s)`"'<>]+/g, (match) => sanitizePathValue(match.replace(/^~\/\.codex/, "/Users/example/.codex"), { srcDir }))
+    .replace(/\b([A-Z0-9_]*(?:TOKEN|SECRET|WEBHOOK|API_KEY|PAT))=([^\s"'`]+)/g, "$1=REDACTED_SECRET_VALUE")
     .replace(/\b(?:ghp|gho|ghu|github_pat|sk)_[A-Za-z0-9_]{16,}\b/g, "REDACTED_SECRET_VALUE")
     .replace(/https?:\/\/hooks\.[^\s)"']+/gi, "https://hooks.example.invalid/REDACTED")
-    .replace(/\b[A-Z0-9_]*(TOKEN|SECRET|WEBHOOK|API_KEY|PAT)\b/g, "REDACTED_CREDENTIAL_NAME")
-    .replace(/storage_state\.json/gi, "AUTH_STATE_FILE")
-    .replace(/\bskills\.zondev\.top\b/gi, "your-skills-domain.example")
-    .replace(/\bmusic\.zondev\.top\b/gi, "your-site-domain.example");
+    .replace(/storage_state\.json/gi, "playwright-state.json")
+    .replace(/\b([a-z0-9-]+)\.zondev\.top\b/gi, "your-subdomain.example");
 }
 
 function firstParagraph(text) {
@@ -135,7 +155,7 @@ function exportReferences({ srcDir, targetDir }) {
     const destPath = path.join(targetReferencesDir, relativePath);
     ensureDir(path.dirname(destPath));
     const text = fs.readFileSync(filePath, "utf8");
-    fs.writeFileSync(destPath, sanitizeMarkdown(text));
+    fs.writeFileSync(destPath, sanitizeMarkdown(text, { srcDir }));
   }
 
   return { exported: files.length, privateCount: files.length };
@@ -187,7 +207,7 @@ function main() {
   const skillText = readSkillMd(srcDir);
   const hasReferencePack = fs.existsSync(path.join(srcDir, "references"));
   const manifest = buildManifest({ slug, skillText, hasReferencePack });
-  const publicSkillMd = sanitizeMarkdown(skillText);
+  const publicSkillMd = sanitizeMarkdown(skillText, { srcDir });
 
   const targetDir = path.join(outputSkillsDir, slug);
   ensureDir(targetDir);

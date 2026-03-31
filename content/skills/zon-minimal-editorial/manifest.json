@@ -2,19 +2,20 @@
   "schema_version": "1.0.0",
   "id": "zon-minimal-editorial",
   "title": "Zon Minimal Editorial",
-  "summary": "把内容型网站和页面收口为克制、黑白、内容优先的 editorial house style。",
+  "summary": "把内容型网站和页面做成克制、黑白、内容优先的 editorial family；它是一个可选方向，不是所有站点的默认壳。",
   "scene": "design-visual",
   "subscenes": ["editorial-web", "content-first-ui", "archive-site"],
   "keywords": ["editorial", "monochrome", "archive", "dossier", "content-first", "website", "house-style"],
   "invoke": "$zon-minimal-editorial",
   "use_when": [
     "要把网站、报告、作品集或档案页做成出版物式阅读体验",
-    "需要统一黑白克制的 house style",
+    "明确需要黑白克制、阅读优先的 editorial family",
     "想减少 SaaS 模板感，让结构和排版承担主要视觉工作"
   ],
   "avoid_when": [
     "页面主要任务是高频交易或彩色状态监控",
-    "需要强烈娱乐感、插画感或营销活动页气质"
+    "需要强烈娱乐感、插画感或营销活动页气质",
+    "项目已经有更强的原生视觉语言，不该再被统一收口"
   ],
   "inputs": [
     {
@@ -31,7 +32,7 @@
   "returns": [
     "editorial fit 判断与页面原型方向",
     "层级、排版和视觉约束",
-    "可复用的 house style 执行建议"
+    "可复用的 house style 执行建议，并明确它何时不该被使用"
   ],
   "dependencies": {
     "bins": [],
