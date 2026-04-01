@@ -31,9 +31,10 @@
         "把视觉层和信息 / 交互层拆开，而不是默认套同一种模板",
         "把视觉方向沉淀成可复用的呈现层，并保留多种风格分支"
       ],
-      "starter_ids": ["frontend-design", "theme-factory", "zon-minimal-editorial", "img-handdrawn-run-report"],
+      "starter_ids": ["frontend-design", "minimalist-information-presentation", "theme-factory", "zon-minimal-editorial", "img-handdrawn-run-report"],
       "chains": [
         ["best-minds", "frontend-design", "theme-factory"],
+        ["best-minds", "minimalist-information-presentation", "frontend-design"],
         ["frontend-design", "zon-minimal-editorial"],
         ["theme-factory", "img-handdrawn-run-report", "frontend-design"]
       ]

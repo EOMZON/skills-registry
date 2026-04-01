@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-27T02:52:47.734Z",
-  "total_skills": 14,
+  "generated_at": "2026-04-01T16:28:46.604Z",
+  "total_skills": 15,
   "visibility_counts": {
-    "public": 11,
+    "public": 12,
     "sanitized": 3
   },
   "source_repo": "https://github.com/EOMZON/skills-registry",
@@ -27,9 +27,9 @@
     {
       "id": "design-visual",
       "title": "设计与视觉",
-      "count": 3,
+      "count": 4,
       "visibility_counts": {
-        "public": 3
+        "public": 4
       }
     },
     {
@@ -248,6 +248,32 @@
       "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/mcp-builder",
       "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/manifest.json",
       "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/mcp-builder/SKILL.md"
+    },
+    {
+      "id": "minimalist-information-presentation",
+      "title": "Minimalist Information Presentation",
+      "summary": "把页面、界面和文档收口成更清晰的信息顺序，用删减和层级控制代替“看起来很简洁”的伪极简。",
+      "scene": "design-visual",
+      "keywords": [
+        "minimalism",
+        "information-design",
+        "hierarchy",
+        "clarity",
+        "layout",
+        "content-first",
+        "ui"
+      ],
+      "invoke": "$minimalist-information-presentation",
+      "visibility": "public",
+      "stability": "stable",
+      "updated_at": "2026-04-02",
+      "manifest_path": "content/skills/minimalist-information-presentation/manifest.json",
+      "skill_md_path": "content/skills/minimalist-information-presentation/SKILL.md",
+      "source_repo": "https://github.com/EOMZON/skills-registry",
+      "source_path": "content/skills/minimalist-information-presentation",
+      "source_tree_url": "https://github.com/EOMZON/skills-registry/tree/main/content/skills/minimalist-information-presentation",
+      "source_manifest_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/minimalist-information-presentation/manifest.json",
+      "source_skill_md_url": "https://github.com/EOMZON/skills-registry/blob/main/content/skills/minimalist-information-presentation/SKILL.md"
     },
     {
       "id": "theme-factory",

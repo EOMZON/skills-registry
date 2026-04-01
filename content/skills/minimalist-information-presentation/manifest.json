@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "id": "minimalist-information-presentation",
+  "title": "Minimalist Information Presentation",
+  "summary": "把页面、界面和文档收口成更清晰的信息顺序，用删减和层级控制代替“看起来很简洁”的伪极简。",
+  "scene": "design-visual",
+  "subscenes": ["information-hierarchy", "content-first-ui", "page-simplification"],
+  "keywords": ["minimalism", "information-design", "hierarchy", "clarity", "layout", "content-first", "ui"],
+  "invoke": "$minimalist-information-presentation",
+  "use_when": [
+    "页面看起来不脏，但信息还是难扫、难懂、难决定下一步",
+    "要做极简收口、减少重复表达、压缩结构层级",
+    "想先把信息顺序理顺，再决定是否叠加具体视觉风格或前端实现"
+  ],
+  "avoid_when": [
+    "目标主要是探索强视觉风格，而不是收紧信息表达",
+    "只需要完整实现代码，不需要先做结构减法或层级判断",
+    "问题主要是复杂服务流程、跨系统断点，而不是单页或单界面的表达负担"
+  ],
+  "inputs": [
+    {
+      "name": "artifact",
+      "required": true,
+      "description": "要处理的页面、界面、文档、作品集、落地页或信息面板"
+    },
+    {
+      "name": "primary_decision",
+      "required": false,
+      "description": "这个页面最终要帮用户做出的判断、行动或下一步"
+    },
+    {
+      "name": "pain_points",
+      "required": false,
+      "description": "已知的混乱点，例如重复信息、多个主标题、CTA 竞争、结构过深或解释过多"
+    }
+  ],
+  "returns": [
+    "页面核心任务的一句话定义",
+    "Orient / Prove / Act 的最小信息序列",
+    "需要删除、合并、降级或提前展示的元素清单",
+    "与 frontend-design、zon-minimal-editorial、ux-clarity-audit 的协同建议"
+  ],
+  "dependencies": {
+    "bins": [],
+    "services": [],
+    "stateful": false
+  },
+  "related_ids": ["best-minds", "ux-clarity-audit", "frontend-design", "zon-minimal-editorial"],
+  "stability": "stable",
+  "visibility": "public",
+  "updated_at": "2026-04-02",
+  "license": "Complete terms in upstream license"
+}
